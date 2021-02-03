@@ -1,0 +1,15 @@
+#!/usr/bin/env lua
+
+local module = arg[1]
+local funcs = {}
+for i = 2, #arg do
+    funcs[#funcs+1] = arg[i]
+end
+
+if not module or module == "-h" or module == "--help" then
+    io.stderr:write("usage: " .. arg[0] .. " MODULE FUNC [FUNC ...]\n")
+    os.exit(1)
+end
+
+local hotfix = require("init")
+print(hotfix.gen(module, funcs))
