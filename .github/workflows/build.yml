@@ -26,9 +26,11 @@ jobs:
         luarocks install lpeglabel
 
     - name: Test
-      run: lua -lluacov test.lua
+      run: |
+        lua -lluacov test.lua
+        luacov
 
     - name: CodeCov
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      run: bash <(curl -s https://codecov.io/bash)
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}

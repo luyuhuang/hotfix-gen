@@ -2,6 +2,9 @@
 
 Hotfix code generator for Lua.
 
+[![build](https://img.shields.io/github/workflow/status/luyuhuang/hotfix-gen/Build)](https://github.com/luyuhuang/hotfix-gen/actions)
+[![codecov](https://img.shields.io/codecov/c/github/luyuhuang/hotfix-gen)](https://codecov.io/gh/luyuhuang/hotfix-gen)
+
 ## Installation
 
 ```bash
