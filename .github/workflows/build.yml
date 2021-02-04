@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Setup Lua
-      uses: leafo/gh-actions-lua@master
+      uses: leafo/gh-actions-lua@v8
       with:
         luaVersion: "5.3"
 
     - name: Setup Luarocks
-      uses: leafo/gh-actions-luarocks@master
-
-    - name: Checkout
-      uses: actions/checkout@v2
+      uses: leafo/gh-actions-luarocks@v4
 
     - name: Install dependencies
       run: |
