@@ -8,7 +8,7 @@ Hotfix code generator for Lua.
 ## Installation
 
 ```bash
-luacov install hotfix-gen
+luarocks install hotfix-gen
 ```
 
 ## Usage
