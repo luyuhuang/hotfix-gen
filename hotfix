@@ -11,5 +11,5 @@ if not module or module == "-h" or module == "--help" then
     os.exit(1)
 end
 
-local hotfix = require("init")
+local hotfix = require("hotfix-gen")
 print(hotfix.gen(module, funcs))

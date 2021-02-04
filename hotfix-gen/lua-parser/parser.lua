@@ -458,7 +458,7 @@ local G = { V"Lua",
 
 local parser = {}
 
-local validator = require("lua-parser.validator")
+local validator = require("hotfix-gen.lua-parser.validator")
 local validate = validator.validate
 local syntaxerror = validator.syntaxerror
 

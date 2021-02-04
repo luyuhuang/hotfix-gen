@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup Lua
+      uses: leafo/gh-actions-lua@master
+      with:
+        luaVersion: "5.3"
+
+    - name: Setup Luarocks
+      uses: leafo/gh-actions-luarocks@master
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        luarocks install luacov
+        luarocks install lpeglabel
+
+    - name: Test
+      run: lua -lluacov test.lua
+
+    - name: CodeCov
+      run: bash <(curl -s https://codecov.io/bash)

@@ -1,0 +1,5 @@
+return {
+    include = {
+        "hotfix%-gen/init"
+    }
+}

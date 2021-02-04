@@ -1,4 +1,4 @@
-local parser = require("lua-parser.parser")
+local parser = require("hotfix-gen.lua-parser.parser")
 
 local function compare_name(index, name)
     local k = name:find("[%.:][^%.:]+$")

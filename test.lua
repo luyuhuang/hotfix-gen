@@ -1,4 +1,4 @@
-local hotfix = require("init")
+local hotfix = require("hotfix-gen")
 
 local res = hotfix.make("test", [[
 local a = 1
