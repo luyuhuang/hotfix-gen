@@ -286,4 +286,43 @@ local baz = res:find('function M.baz()', bar, true)
 
 assert(a and b and foo and bar and baz)
 
+
+local res = hotfix.make("test", [[
+local foo
+local function foo()
+    foo()
+end
+
+function bar()
+    foo()
+end
+]], {"bar"})
+
+
+local foo = res:find('local foo', 1, true)
+local ffoo = res:find('local function foo', 1, true)
+local bar = res:find('function bar()', ffoo, true)
+
+assert(not foo and ffoo and bar)
+
+
+local res = hotfix.make("test", [[
+local foo
+local foo = function()
+    foo()
+end
+
+function bar()
+    foo()
+end
+]], {"bar"})
+
+print(res)
+
+local foo = res:find('local foo\n', 1, true)
+local ffoo = res:find('local foo = function()', foo, true)
+local bar = res:find('function bar()', ffoo, true)
+
+assert(foo and ffoo and bar)
+
 print("passed")

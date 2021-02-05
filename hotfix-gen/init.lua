@@ -173,14 +173,16 @@ local function pick(statements, names)
         elseif statement.tag == "Localrec" then
             local left, right = table.unpack(statement)
             local id, exp = left[1], right[1]
-            list[#list+1] = {
+            local i = #list + 1
+            n2i[id[1]] = i
+            list[i] = {
                 type = "lfunc",
                 name = id[1],
                 deps = dependences(n2i, exp, {}),
                 pos = statement.pos,
                 to = statement.to
             }
-            n2i[id[1]] = #list
+            list[i].deps[i] = nil
 
         elseif statement.tag == "Return" then
             for _, exp in ipairs(statement) do
