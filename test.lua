@@ -235,6 +235,8 @@ function M.foo()
 end
 ]], {"foo"})
 
+assert(load(res) ~= nil)
+
 local a = res:find('local a = 1', 1, true)
 local b = res:find('local b', 1, true)
 local foo = res:find('function M.foo()', a, true)
@@ -251,6 +253,8 @@ function M.foo()
     print(a)
 end
 ]], {"foo"})
+
+assert(load(res) ~= nil)
 
 local a = res:find('local a = -1', 1, true)
 local b = res:find('local b', a, true)
@@ -277,6 +281,8 @@ function M.baz()
 end
 ]], {"baz"})
 
+assert(load(res) ~= nil)
+
 local a = res:find('local a', 1, true)
 local b = res:find('local b', a, true)
 local t = res:find('local t = {a = a, b = b}', b, true)
@@ -298,6 +304,7 @@ function bar()
 end
 ]], {"bar"})
 
+assert(load(res) ~= nil)
 
 local foo = res:find('local foo', 1, true)
 local ffoo = res:find('local function foo', 1, true)
@@ -317,7 +324,7 @@ function bar()
 end
 ]], {"bar"})
 
-print(res)
+assert(load(res) ~= nil)
 
 local foo = res:find('local foo\n', 1, true)
 local ffoo = res:find('local foo = function()', foo, true)
